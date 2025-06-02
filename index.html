@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Surpresa</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #000000;
+      margin: 0;
+      padding: 0;
+    }
+    #slideshow-container {
+      display: none;
+      margin: 20px auto;
+      width: 400px;
+      height: 650px;
+      overflow: hidden;
+      border: 3px solid #3d3d3d;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
+    #slideshow-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    #love-text {
+      display: none;
+      font-size: 24px;
+      color: rgb(255, 255, 255);
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    button {
+      margin-top: 100px;
+      padding: 15px 30px;
+      font-size: 18px;
+      background-color: rgb(255, 255, 255);
+      color: rgb(0, 0, 0);
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: rgb(182, 182, 182);
+    }
+  </style>
+</head>
+<body>
+
+  <button onclick="start()">Clique</button>
+
+  <div id="slideshow-container">
+    <img id="slideshow" src="" alt="Slideshow">
+  </div>
+
+  <div id="love-text">Sempre e pra sempre.<br> Com você encontrei o amor mais puro e verdadeiro. Eu te amo</div>
+
+  <audio id="music" src="musica.mp3"></audio>
+
+  <script>
+    const images = [
+      "foto1.jpg",
+      "foto2.jpg",
+      "foto3.jpg",
+      "foto4.jpg"
+    ];
+
+    let index = 0;
+    let interval;
+
+    function start() {
+      // Tocar música
+      const music = document.getElementById("music");
+      music.play();
+
+      // Mostrar slideshow e texto
+      document.getElementById("slideshow-container").style.display = "block";
+      document.getElementById("love-text").style.display = "block";
+
+      // Iniciar slideshow
+      const slideshow = document.getElementById("slideshow");
+      slideshow.src = images[index];
+
+      interval = setInterval(() => {
+        index = (index + 1) % images.length;
+        slideshow.src = images[index];
+      }, 2000); // troca a cada 2 segundos
+    }
+  </script>
+
+</body>
+</html>
